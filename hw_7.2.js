@@ -1,5 +1,5 @@
 let services = {
-    "стрижка": "220 грн",
+    "стрижка": "120 грн",
     "гоління": "80 грн",
     "Миття голови": "100 грн",
     price: function(){
@@ -8,7 +8,7 @@ let services = {
         for (let key in services) {
             if (key !== "price" && key !== "maxPrice" && key !== "minPrice") {
                 value = parseFloat(services[key])
-                if (!isNaN(Number(value))) {
+                if (!isNaN(value)) {
                     result += value;
                 }
             }
@@ -21,7 +21,7 @@ let services = {
         for (let key in services) {
             if (key !== "price" && key !== "maxPrice" && key !== "minPrice") {
                 value = parseFloat(services[key])
-                if (!isNaN(Number(value))) {
+                if (!isNaN(value)) {
                     if (value > result) {
                         result = value;
                     }
@@ -36,7 +36,7 @@ let services = {
         for (let key in services) {
             if (key !== "price" && key !== "maxPrice" && key !== "minPrice") {
                 value = parseFloat(services[key])
-                if (!isNaN(Number(value))) {
+                if (!isNaN(value)) {
                     if (value < result) {
                         result = value;
                     }
