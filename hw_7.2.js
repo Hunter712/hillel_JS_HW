@@ -1,22 +1,30 @@
 let services = {
-    "стрижка": "1000 грн",
+    "стрижка": "220 грн",
     "гоління": "80 грн",
     "Миття голови": "100 грн",
     price: function(){
         let result = 0;
+        let value = null
         for (let key in services) {
             if (key !== "price" && key !== "maxPrice" && key !== "minPrice") {
-                result += parseFloat(services[key]);
+                value = parseFloat(services[key])
+                if (!isNaN(Number(value))) {
+                    result += value;
+                }
             }
         }
         return result;
     },
     maxPrice: function(){
        let result = 0;
+       let value = null
         for (let key in services) {
             if (key !== "price" && key !== "maxPrice" && key !== "minPrice") {
-                if (parseFloat(services[key]) > result){
-                    result = parseFloat(services[key]);
+                value = parseFloat(services[key])
+                if (!isNaN(Number(value))) {
+                    if (value > result) {
+                        result = value;
+                    }
                 }
             }
         }
@@ -24,10 +32,14 @@ let services = {
     },
     minPrice: function(){
        let result = parseFloat(services["стрижка"]);
+       let value = null
         for (let key in services) {
             if (key !== "price" && key !== "maxPrice" && key !== "minPrice") {
-                if (parseFloat(services[key]) < result){
-                    result = parseFloat(services[key]);
+                value = parseFloat(services[key])
+                if (!isNaN(Number(value))) {
+                    if (value < result) {
+                        result = value;
+                    }
                 }
             }
         }
