@@ -48,26 +48,22 @@ const arr = [
 
 function email_validator(data){
     const pattern = /^[a-zA-Z0-9_.-]{2,20}\@[a-zA-Z0-9]{2,10}\.[a-zA-Z0-9]{2,4}$/gm;  // checking that it's email in this string
-    let result = []
-    let each_email = null
-    for (let element = 0; element < data.length; element++) {
-        each_email = data[element].email.match(pattern);
-        if (each_email !== null) {
-            each_email = approving_email(each_email[0])
-            if (each_email !== undefined){
-                result.push(each_email);
+    const result = []
+    data.forEach((element) => {
+        if (element.email.match(pattern)) {
+            if (approving_email(element.email)){
+                result.push(element.email);
             }
         }
-    }
+    });
+
     return result;
 }
 
 function approving_email(email){
     const pattern = /\@(gmail|yahoo)\.com$/gm;  // checking that it's email has only gmail.com or yahoo.com domain.
-    let result = email.match(pattern);
-    if(result !== null){
-        return email;
-    }
+    const result = email.match(pattern);
+    return result ? email : null;
 }
 
 console.log(email_validator(arr));
